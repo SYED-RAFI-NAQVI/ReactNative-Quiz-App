@@ -10,7 +10,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,34 +21,47 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+
+export default class App extends Component{
+  onPress = () => {
+    alert('Hiii')
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <TouchableOpacity style = {styles.button} onPress={this.onPress}>
+          <View style = {styles.textContainer}>
+            <Icon name="home" size={20} color="white"/>
+            <Text style = {styles.text}>Hiii</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent:'center'
+  },
+  text:{
+    fontSize: 24,
+    color: 'white',
+    // justifyContent: 'center',
+    // alignItems: 'center'
+  },
+  textContainer:{
+    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignItems: 'center'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  button:{
+    margin: 20,
+    padding: 10,
+    backgroundColor: 'green',
+    borderRadius: 30,
+  }
 });
