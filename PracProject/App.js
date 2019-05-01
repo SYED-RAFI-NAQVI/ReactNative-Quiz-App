@@ -27,8 +27,20 @@ export default class App extends Component{
     alert('Hiii')
   }
   render() {
+    const mobiles = [
+      {name : 'samsung', cost : 40},
+      {name : 'apple', cost : 60},
+      {name : 'onePlus', cost : 30},
+    ]
     return (
       <View style={styles.container}>
+        <View>
+        {
+          mobiles.map((mobile, index) => 
+          <Text key={index}>{mobile.name} is {mobile.cost}</Text>
+          )
+        }
+        </View>
         <TouchableOpacity style = {styles.button} onPress={this.onPress}>
           <View style = {styles.textContainer}>
             <Icon name="home" size={20} color="white"/>
